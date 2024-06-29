@@ -231,3 +231,50 @@ app.get('/usuarios', async (request, response) =>{
     response.status(200).json(users);
 })
  AGORA ELE RETORNA AS INFOMAÇÕES DO BANCO DE DADOS!!!!! 
+__________________________________________________________________________________________________________
+ UPDATE BANCO DE DADOS / METODO "PUT"
+
+ é bem parecido com metodo post...
+coisas que não posso esqucer : 
+ 
+ :id
+ trocar o nome para put
+ update
+        where
+        id: request.params.id
+
+        
+app.put('/usuarios/:id', async (request, response) =>{
+
+    const user = await prisma.user.update({
+        where:{
+            id: request.params.id
+        },
+       data:{
+        email: request.body.email,
+         age: request.body.age,
+        name: request.body.name
+       }
+    });
+
+   response.status(200).json(user);
+})
+ SERÁ ATUALIZADO PELO VALOR UNICO QUE SOMENTE 1 PESSOA TEM .. NO CASO O ID GERADO ALTOMATICAMTNE!
+        __________________________________________________________________________________________________________
+AGORA É O DELETE -> VAMOS DELETAR UM DADO ESPECIFICO
+        PARECIDO COM PUT trocando algumas infomações:
+        
+app.delete('/usuarios/:id', async (request, response) =>{
+
+    await prisma.user.delete({
+        where:{
+            id: request.params.id
+        }
+    });
+
+   response.status(200).json({menssage: "Usuário deletado com sucesso!"});
+})
+
+        não tem query/bbody/ vai ser sem infomação!
+        DESSA FORMA VAI BUSCAR O USUARIO ESPECIFICO QUE QUERO DELETAR.
+                             
