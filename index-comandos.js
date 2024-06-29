@@ -3,6 +3,13 @@ CRIANDO PRIMEIRO BANCO DE DADOS...
 
  (PRISMA É UMA BIBLIOTECA QUE AJUDA NA COMUNICAÇÃO ENTRE BANCO DE DADOS E APLICAÇÃO) - VAMOS UTILIZAR ELE.
 
+ CRUD{
+ create
+ read
+ update
+ delete
+  }
+
 criando nosso primeiro banco de dados!
 
 vamos no site mongodb.com
