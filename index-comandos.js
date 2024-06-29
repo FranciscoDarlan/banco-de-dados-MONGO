@@ -159,3 +159,56 @@ para verificar o cadastro vamos no site mongoDb na nossa data base
 
 vai aparecer todos os usuarios!!
 __________________________________________________________________________________________________________
+na documentação do prisma ele ensina como enviar os dado para o banco de dados e buscar os dados 
+com codigos ..
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+ PARTE 2 
+MANDANDO INFOMAÇÃOA E BUSCANDO COM CÓDIGOS!!!!
+na parte Queryng the database:
+vamos colar esse código lá no porjeto:
+
+ import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+dentro do meu POST vou colocar o codigo para criar o usuario:
+
+app.post('/usuarios', (request, response) =>{
+          prisma.user.create({
+             data:{
+              email: request.body.email,
+               age: request.body.age,
+              name: request.body.name
+             }
+          });
+}
+__________________________________________________________________________________________________________
+async / await   sempre que vou acessar alçgo externo .. rpeciso colocar eles!!!!! para avisar que é uma promise!!
+O objeto Promise representa a eventual conclusão (ou falha) de uma operação assíncrona e seu valor resultante.
+
+ app.post('/usuarios', async (request, response) =>{
+ await prisma.user.create({
+             data:{
+              email: request.body.email,
+               age: request.body.age,
+              name: request.body.name
+             }
+          });
+
+
+  quando eu for no meu front end enviar os dados o metodo post mandará para o banco de dados!
+  e consigo ir la no site do mongo Db e acessar esses dados!
+__________________________________________________________________________________________________________
+ BOA PRÁTICA É COLOCAR UMA VARIAVEL!
+
+       const user = app.post('/usuarios', async (request, response) =>{
+ await prisma.user.create({
+             data:{
+              email: request.body.email,
+               age: request.body.age,
+              name: request.body.name
+             }
+          });
+            response.send(201).json(user);
