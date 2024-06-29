@@ -212,3 +212,15 @@ ________________________________________________________________________________
              }
           });
             response.send(201).json(user);
+  __________________________________________________________________________________________________________
+   mostrando no metodo GET as infomações!!!!
+         IMPORTANTE NÃO POSSO ESQUECER DO ASYNC / AWAIT
+ 
+ //tipo GET - mostrar
+app.get('/usuarios', async (request, response) =>{
+
+    const users = await prisma.user.findMany();
+
+    response.status(200).json(users);
+})
+ AGORA ELE RETORNA AS INFOMAÇÕES DO BANCO DE DADOS!!!!! 
