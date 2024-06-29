@@ -1,6 +1,8 @@
 COMANDOS BANCO DE DADOS MONGO DB
 CRIANDO PRIMEIRO BANCO DE DADOS...
 
+ (PRISMA É UMA BIBLIOTECA QUE AJUDA NA COMUNICAÇÃO ENTRE BANCO DE DADOS E APLICAÇÃO) - VAMOS UTILIZAR ELE.
+
 criando nosso primeiro banco de dados!
 
 vamos no site mongodb.com
@@ -98,8 +100,62 @@ DATABASE_URL=""
 e colocar dentro das aspas o que copiei no site!
 ficando assim : 
 DATABASE_URL="mongodb+srv://darlan:<password>@users.q0qkzst.mongodb.net/?retryWrites=true&w=majority&appName=Users"
-          mongodb+srv://darlan: (aqui apago) @users.q0qkzst.mongodb.net/ (aqui o nome tabela banco)  ?retryWrites=true&w=majority&appName=Users
+
+DATABASE_URL="mongodb+srv://darlan:darlan123mongodb@users.q0qkzst.mongodb.net/Users?retryWrites=true&w=majority&appName=Users"
+
+mongodb+srv://darlan: (aqui apago) @users.q0qkzst.mongodb.net/ (aqui o nome tabela banco)  ?retryWrites=true&w=majority&appName=Users
                             (E COLOCO MINHA SENHA)                     (NOME DA TABELA BANCO DE DADO)
  TEM QUE TROCAR ESSAS INFOMAÇÕES !!!!!!!!!!!!!!!!!!!
 __________________________________________________________________________________________________________
-VAMOS PARA O CREATING THE PRISMA SCHEMA
+VAMOS PARA O CREATING THE PRISMA SCHEMA:
+BASICAMENTE É O FORMATO QUE OS DADOS VÃO FICAR!
+
+despoi do meu banco de dados, tenho que criar os meus schemas = esquemas!
+copio o modelo do site prisma.
+ tem outros, mas no nosso projeto vamos usar esse:
+
+model User {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId         //( autmaticamente o primsa vai gerar um id único para cada usuario)
+  email   String   @unique       // (@unique = significa valor único)
+  name    String?            ////(? = opcional, não precisa preencher)
+  address Address        // sem interrogação é obrigatório preencher.
+  posts   Post[]
+}
+
+posso trocas os valores caso queira - colcoar idade/ !! etc ...
+cola la no código dentro da pasta prisma / schema.prisma
+
+__________________________________________________________________________________________________________
+
+Próximo passo ->  Install Prisma Client
+
+npm install @prisma/client     OK
+
+cola la no terminal, instalação rápida!
+
+DEPOIS PRECISA DAR O SEGUINTE COMANDO:
+
+ npx prisma db push      ok
+
+esse cara não é um devDepensencies, ele precisa está junto do projeto na hora que  for para o servidor! IMPORTATNE!!!!
+
+para verificar o banco de dado na tela o prisma tem um comando para isso, no terminal vamos colocar:
+
+npx prisma studio      ok
+
+vai direcionar para port 5555
+e mostrar o modelo de banco de dados!
+nessa interface podemos criar manualmente ...
+ 
+caso apareça erro em algum lugar, errei em algum passo, verificar novamente!
+NOVAMENTE !!!!!
+ (PRISMA É UMA BIBLIOTECA QUE AJUDA NA COMUNICAÇÃO ENTRE BANCO DE DADOS E APLICAÇÃO) - VAMOS UTILIZAR ELE.
+__________________________________________________________________________________________________________
+
+para verificar o cadastro vamos no site mongoDb na nossa data base
+1- database
+2- Browse Collections
+3- User   (nome do banco de dados)
+
+vai aparecer todos os usuarios!!
+__________________________________________________________________________________________________________
