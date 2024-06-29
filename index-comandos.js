@@ -277,4 +277,12 @@ app.delete('/usuarios/:id', async (request, response) =>{
 
         não tem query/bbody/ vai ser sem infomação!
         DESSA FORMA VAI BUSCAR O USUARIO ESPECIFICO QUE QUERO DELETAR.
-                             
+
+
+ JÁ POSSO AVISAR QUE SEI FAZER UM CRUD (
+         QUE É 
+         CRIAR 
+         LER
+         ATUALIZAR 
+         DELETAR
+        
