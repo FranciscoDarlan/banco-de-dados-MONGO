@@ -1,4 +1,5 @@
 COMANDOS BANCO DE DADOS MONGO DB
+CRIANDO PRIMEIRO BANCO DE DADOS...
 
 criando nosso primeiro banco de dados!
 
